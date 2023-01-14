@@ -37,8 +37,6 @@ pub fn Zigenv(config: Config) type {
     return struct {
         const Self = @This();
 
-        pub const key_value_delimiter = "=";
-
         allocator: std.mem.Allocator,
         map: std.StringHashMap([]const u8),
         buf: []u8,
@@ -126,7 +124,7 @@ pub fn Zigenv(config: Config) type {
                 return;
             }
 
-            var parts = std.mem.split(u8, line, key_value_delimiter);
+            var parts = std.mem.split(u8, line, &[_]u8{delimiter});
             // return blank line
             const key: []const u8 = parts.next() orelse return;
             try validate_variable_name(key);
