@@ -18,8 +18,6 @@ pub const ValueFormatError = error {
 };
 
 const delimiter = '=';
-const delimiter_str = [1]u8{delimiter};
-
 const escape_sequence = '\\';
 
 pub const Config = struct {
