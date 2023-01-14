@@ -89,7 +89,6 @@ test "should load many keys" {
     try testing.expect(std.mem.eql(u8, actual.?, "9"));
 }
 
-// not run ?
 test "should ignore empty lines and lines with space character(s)" {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     var allocator = gpa.allocator();
@@ -202,7 +201,6 @@ test "should pick lately redefined variable" {
     try testing.expect(std.mem.eql(u8, actual.?, "2"));
 }
 
-
 test "should occur error when bared variable contains space" {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     var allocator = gpa.allocator();
@@ -214,7 +212,6 @@ test "should occur error when bared variable contains space" {
 
     try testing.expectError(zigenv.ValueFormatError.InvalidCharacter, err);
 }
-
 
 test "should occur error when value contains special characters" {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
@@ -251,7 +248,6 @@ test "should occur error when quoted value has space befor opening quote" {
 
     try testing.expectError(zigenv.ValueFormatError.InvalidCharacter, err);
 }
-
 
 test "should occur error when quoted value that does not close quote" {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
@@ -325,7 +321,6 @@ test "should occur error when any blank line contains tab" {
     try testing.expectError(zigenv.KeyFormatError.InvalidCharacter, err);
 }
 
-
 test "should occur error when quoted value does contain unescaped quote" {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     var allocator = gpa.allocator();
@@ -338,7 +333,6 @@ test "should occur error when quoted value does contain unescaped quote" {
     try testing.expectError(zigenv.ValueFormatError.UnescapedQuote, err);
 }
 
-
 test "should occur error when quoted value end with escaped quote" {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     var allocator = gpa.allocator();
@@ -349,4 +343,16 @@ test "should occur error when quoted value end with escaped quote" {
     const err = env.load();
 
     try testing.expectError(zigenv.ValueFormatError.UnpairedQuote, err);
+}
+
+test "should occur error when key contains other than alpha numeric character and underscore" {
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    var allocator = gpa.allocator();
+    defer _ = gpa.deinit();
+    
+    var env = zigenv.Zigenv(.{.stage = "invalid_case13"}).init(allocator);
+    defer env.deinit();
+    const err = env.load();
+
+    try testing.expectError(zigenv.KeyFormatError.InvalidCharacter, err);
 }

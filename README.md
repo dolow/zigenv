@@ -39,12 +39,6 @@ If there are multiple `.env` file like `.env.production`, set stage option to `z
 var env = zigenv.Zigenv(.stage = "production").init(allocator);
 ```
 
-# Build
-
-```
-
-```
-
 # Test
 
 ```
