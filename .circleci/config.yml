@@ -11,4 +11,4 @@ jobs:
     executor: zig
     steps:
       - checkout
-      - run: zig test zigenv/main_test.zig
+      - run: /deps/local/bin/zig test zigenv/main_test.zig
