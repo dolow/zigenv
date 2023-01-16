@@ -3,7 +3,7 @@ version: 2.1
 executors:
   zig:
     docker:
-      - image: ziglang/static-base:llvm13-x86_64-1
+      - image: cimg/base:2021.04
     working_directory: /zigenv
 
 jobs:
@@ -11,4 +11,6 @@ jobs:
     executor: zig
     steps:
       - checkout
-      - run: /deps/local/bin/zig test zigenv/main_test.zig
+      - run: curl https://ziglang.org/download/0.10.0/zig-linux-x86_64-0.10.0.tar.xz -O
+      - run: tar xf zig-linux-x86_64-0.10.0.tar.xz
+      - run: ./zig-linux-x86_64-0.10.0/zig test zigenv/main_test.zig
