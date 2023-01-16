@@ -1,0 +1,14 @@
+version: 2.1
+
+executors:
+  zig:
+    docker:
+      - image: ziglang/static-base:llvm15-aarch64-3
+    working_directory: /zigenv
+
+jobs:
+  build:
+    executor: zig
+    steps:
+      - checkout
+      - run: zig test zigenv/main_test.zig
