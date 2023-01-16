@@ -4,6 +4,8 @@ Zigenv is a typical `.env` loader for Zig.
 
 It loads `.env` definiions on time.
 
+Zigenv is based on zig version 0.10.0.
+
 # Fatures
 
 - UTF-8 multibyte support
