@@ -1,4 +1,3 @@
-[![dolow/zigenv](https://circleci.com/gh/dolow/zigenv.svg?style=svg)](<LINK>)
 [![dolow/zigenv](https://circleci.com/gh/dolow/zigenv/tree/main.svg?style=svg)](https://circleci.com/gh/dolow/zigenv/?branch=main)
 
 # Zigenv
