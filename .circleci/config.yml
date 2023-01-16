@@ -3,7 +3,7 @@ version: 2.1
 executors:
   zig:
     docker:
-      - image: ziglang/static-base:llvm15-aarch64-3
+      - image: ziglang/static-base:llvm13-x86_64-1
     working_directory: /zigenv
 
 jobs:
