@@ -33,7 +33,7 @@ const MultibyteWidth = enum(u4) {
     Four,
 };
 
-pub fn Zigenv(config: Config) type {
+pub fn Zigenv(comptime config: Config) type {
     return struct {
         const Self = @This();
 
